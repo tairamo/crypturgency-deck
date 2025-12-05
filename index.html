@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptUrgency - Investor Pitch Deck</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #000000;
+            color: #E4E0DB;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px 0;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #8762FD, #a98dff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .slide-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .slide {
+            background: rgba(135, 98, 253, 0.08);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(135, 98, 253, 0.2);
+            box-shadow: 0 8px 32px rgba(135, 98, 253, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(135, 98, 253, 0.2);
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #8762FD, #a98dff);
+            border-radius: 20px 20px 0 0;
+        }
+
+        .slide.highlight {
+            background: linear-gradient(135deg, #8762FD 0%, #a98dff 100%);
+            color: #ffffff;
+        }
+
+        .slide.highlight::before {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .slide h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .slide-icon {
+            width: 24px;
+            height: 24px;
+            opacity: 0.8;
+        }
+
+        .slide p {
+            margin-bottom: 12px;
+            opacity: 0.9;
+        }
+
+        .slide ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .slide li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .slide li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #a98dff;
+            font-weight: bold;
+        }
+
+        .metric {
+            background: rgba(135, 98, 253, 0.15);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+            text-align: center;
+            border: 1px solid rgba(135, 98, 253, 0.3);
+        }
+
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #a98dff;
+            display: block;
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            color: #E4E0DB;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+
+        .revenue-stream {
+            background: rgba(135, 98, 253, 0.12);
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 8px;
+            border-left: 4px solid #a98dff;
+        }
+
+        .competitive-advantage {
+            background: rgba(135, 98, 253, 0.12);
+            padding: 10px 15px;
+            margin: 8px 0;
+            border-radius: 8px;
+            border-left: 4px solid #a98dff;
+        }
+
+        .timeline-item {
+            background: rgba(228, 224, 219, 0.08);
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid #E4E0DB;
+            color: #E4E0DB;
+        }
+
+        .team-member {
+            background: rgba(135, 98, 253, 0.12);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(135, 98, 253, 0.25);
+        }
+
+        .funding-bar {
+            background: rgba(228, 224, 219, 0.2);
+            height: 20px;
+            border-radius: 10px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+
+        .funding-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #8762FD, #a98dff);
+            border-radius: 10px;
+        }
+
+        /* Token Slides Styles */
+        .token-step {
+            background: rgba(135, 98, 253, 0.12);
+            padding: 18px;
+            margin: 12px 0;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(135, 98, 253, 0.25);
+            position: relative;
+        }
+
+        .token-step .step-number {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(45deg, #8762FD, #a98dff);
+            color: #fff;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .token-step h4 {
+            margin-top: 8px;
+            color: #a98dff;
+            font-size: 1.1rem;
+        }
+
+        .step-arrow {
+            text-align: center;
+            color: #a98dff;
+            font-size: 1.5rem;
+            margin: 5px 0;
+        }
+
+        .comparison-box {
+            background: rgba(135, 98, 253, 0.08);
+            padding: 15px;
+            border-radius: 12px;
+            margin: 10px 0;
+            border: 1px solid rgba(135, 98, 253, 0.2);
+        }
+
+        .comparison-box.without {
+            border-left: 4px solid #ff6b6b;
+        }
+
+        .comparison-box.with {
+            border-left: 4px solid #51cf66;
+            background: rgba(81, 207, 102, 0.08);
+        }
+
+        .comparison-box h4 {
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .comparison-box.without h4 {
+            color: #ff6b6b;
+        }
+
+        .comparison-box.with h4 {
+            color: #51cf66;
+        }
+
+        .savings-highlight {
+            background: linear-gradient(135deg, #51cf66 0%, #40c057 100%);
+            color: #fff;
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 15px;
+            font-weight: 600;
+        }
+
+        .distribution-bar {
+            display: flex;
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .distribution-segment {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .distribution-legend {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 0.85rem;
+        }
+
+        .comparison-table th {
+            background: rgba(135, 98, 253, 0.2);
+            padding: 10px 8px;
+            text-align: left;
+            border-bottom: 2px solid rgba(135, 98, 253, 0.3);
+        }
+
+        .comparison-table td {
+            padding: 8px;
+            border-bottom: 1px solid rgba(135, 98, 253, 0.1);
+        }
+
+        .comparison-table tr:hover {
+            background: rgba(135, 98, 253, 0.05);
+        }
+
+        .check-yes { color: #51cf66; }
+        .check-no { color: #ff6b6b; }
+        .check-partial { color: #fcc419; }
+
+        .roadmap-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .roadmap-quarter {
+            background: rgba(135, 98, 253, 0.12);
+            padding: 15px;
+            border-radius: 12px;
+            border-left: 4px solid #a98dff;
+        }
+
+        .roadmap-quarter h4 {
+            color: #a98dff;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .roadmap-quarter ul {
+            font-size: 0.85rem;
+        }
+
+        .market-stat {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(135, 98, 253, 0.1);
+            padding: 12px 15px;
+            border-radius: 10px;
+            margin: 8px 0;
+        }
+
+        .market-stat-icon {
+            font-size: 1.5rem;
+        }
+
+        .market-stat-text {
+            flex: 1;
+        }
+
+        .market-stat-value {
+            color: #a98dff;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .slide.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .gap-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+        }
+
+        .gap-item {
+            background: rgba(135, 98, 253, 0.15);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(135, 98, 253, 0.3);
+        }
+
+        .first-mover {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .first-mover-item {
+            background: rgba(81, 207, 102, 0.1);
+            border: 1px solid rgba(81, 207, 102, 0.3);
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .first-mover-item .check-yes {
+            font-size: 1.1rem;
+        }
+
+        .cta {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(135, 98, 253, 0.08);
+            border-radius: 20px;
+            margin-top: 40px;
+        }
+
+        .cta h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #8762FD, #a98dff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #8762FD, #a98dff);
+            color: #ffffff;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .slide-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="https://firebasestorage.googleapis.com/v0/b/podcastsite-1bedc.appspot.com/o/logo-white.svg?alt=media&token=5fa36de0-ca94-44d3-a5cf-010b82fb2b55" alt="CryptUrgency Logo" style="height: 200px; display: block; margin: 0 auto;">
+            <p>Unlocking liquidity from crypto assets through trustless, compliant lending</p>
+        </div>
+
+        <div class="slide-grid">
+            <!-- Company Purpose -->
+            <div class="slide">
+                <h2>
+                    <span class="slide-icon">🎯</span>
+                    Company Purpose
+                </h2>
+                <p><strong>We enable crypto holders to access instant fiat liquidity without selling their appreciating digital assets.</strong></p>
+                <p>Through smart contract-secured lending, we bridge the gap between crypto wealth and real-world financial needs, making digital assets truly useful for everyday finance.</p>
+            </div>
+
+            <!-- Problem -->
+            <div class="slide highlight">
+                <h2>
+                    <span class="slide-icon">⚡</span>
+                    Problem
+                </h2>
+                <p><strong>Customer Pain Points:</strong></p>
+                <ul>
+                    <li>Crypto holders forced to sell appreciating assets for liquidity</li>
+                    <li>Traditional loans require extensive credit checks and documentation</li>
+                    <li>Limited trustless lending solutions globally</li>
+                    <li>High fees and long processing times in existing platforms</li>
+                </ul>
+                <p><strong>Current Solutions:</strong> Centralized exchanges with custody risks, traditional banking with crypto discrimination, or forced asset liquidation.</p>
+            </div>
+
+            <!-- Solution -->
+            <div class="slide">
+                <h2>
+                    <span class="slide-icon">💡</span>
+                    Solution
+                </h2>
+                <p><strong>Value Proposition:</strong></p>
+                <ul>
+                    <li>Trustless crypto collateral via audited smart contracts</li>
+                    <li>Support for all major 5 stablecoins as collateral (USDT, USDC, DAI, BUSD, TUSD)</li>
+                    <li>Instant loan processing (&lt;10 minutes)</li>
+                    <li>No credit checks or extensive documentation</li>
+                    <li>Multiple payout options (fiat via Stripe, USDC on-chain)</li>
+                    <li>Global accessibility with regulatory compliance</li>
+                </ul>
+                <p><strong>Use Cases:</strong> Emergency liquidity, business investments, real estate down payments, tax obligations, without selling crypto holdings.</p>
+            </div>
+
+            <!-- Why Now -->
+            <div class="slide">
+                <h2>
+                    <span class="slide-icon">🚀</span>
+                    Why Now?
+                </h2>
+                <p><strong>Industry Evolution:</strong></p>
+                <ul>
+                    <li>Crypto adoption reaching mainstream (12M+ users in Brazil alone)</li>
+                    <li>Traditional finance embracing digital assets</li>
+                    <li>Smart contract technology matured and battle-tested</li>
+                    <li>Clear regulatory frameworks emerging globally</li>
+                </ul>
+                <p><strong>Recent Trends:</strong></p>
+                <ul>
+                    <li>Dubai's VARA licensing provides regulatory clarity</li>
+                    <li>Brazil's comprehensive Virtual Assets Law (2023)</li>
+                    <li>Growing demand for non-liquidation crypto strategies</li>
+                </ul>
+            </div>
+
+            <!-- Market Size -->
+            <div class="slide">
+                <h2>
+                    <span class="slide-icon">📊</span>
+                    Market Size
+                </h2>
+                <p><strong>Target Customer:</strong> Crypto holders with $50K+ portfolios seeking liquidity</p>
+                
+                <div class="metric">
+                    <span class="metric-value">$1.7T+</span>
+                    <span class="metric-label">Global Crypto Market Cap</span>
+                </div>
+                
+                <div class="metric">
+                    <span class="metric-value">$67.9B</span>
+                    <span class="metric-label">Global P2P Lending Market</span>
+                </div>
+                
+                <div class="metric">
+                    <span class="metric-value">12M+</span>
+                    <span class="metric-label">Active Crypto Users (Brazil)</span>
+                </div>
+
+                <p><strong>TAM:</strong> $50B+ (crypto lending market)</p>
+                <p><strong>SAM:</strong> $5B (compliant crypto lending)</p>
+                <p><strong>SOM:</strong> $500M (our addressable market)</p>
+            </div>
+
+            <!-- Competition -->
+            <div class="slide">
+                <h2>
+                    <span class="slide-icon">⚔️</span>
+                    Competition
+                </h2>
+                <p><strong>Main Competitors:</strong> Celsius (failed), BlockFi (bankrupt), Nexo, Salt Lending</p>
+                
+                <p><strong>Our Competitive Advantages:</strong></p>
+                <div class="competitive-advantage">
+                    <strong>Regulatory Compliance:</strong> Dubai-based with VARA framework
+                </div>
+                <div class="competitive-advantage">
+                    <strong>Trustless Architecture:</strong> Smart contract collateral management
+                </div>
+                <div class="competitive-advantage">
+                    <strong>Tax Efficiency:</strong> Zero crypto capital gains tax jurisdiction
+                </div>
+                <div class="competitive-advantage">
+                    <strong>Speed:</strong> Sub-10 minute loan processing
+                </div>
+                <div class="competitive-advantage">
+                    <strong>Global Access:</strong> International compliance framework
+                </div>
+            </div>
+
+            <!-- Product -->
+            <div class="slide">
+                <h2>
+                    <span class="slide-icon">🔧</span>
+                    Product
+                </h2>
+                <p><strong>Product Line-up:</strong></p>
+                <ul>
+                    <li><strong>Form Factor:</strong> Web app + mobile-optimized interface</li>
+                    <li><strong>Functionality:</strong> Collateral locking, loan processing, repayment tracking</li>
+                    <li><strong>Features:</strong> Real-time LTV monitoring, automated liquidation, price alerts</li>
+                    <li><strong>Architecture:</strong> Next.js frontend, Node.js backend, Solidity smart contracts</li>
+                </ul>
+                
+                <p><strong>Development Roadmap:</strong></p>
+                <div class="timeline-item">
+                    <strong>Weeks 1-2:</strong> Smart contracts + wallet integration
+                </div>
+                <div class="timeline-item">
+                    <strong>Weeks 3-4:</strong> Fiat integration + KYC implementation
+                </div>
+                <div class="timeline-item">
+                    <strong>Weeks 5-6:</strong> MVP dashboard + backend + price feeds
+                </div>
+                <div class="timeline-item">
+                    <strong>Weeks 7-9:</strong> Security audit + testing + legal setup
+                </div>
+                <div class="timeline-item">
+                    <strong>Week 10:</strong> Public launch
+                </div>
+            </div>
+
+            <!-- Business Model -->
+            <div class="slide">
+                <h2>
+                    <span class="slide-icon">💰</span>
+                    Business Model
+                </h2>
+                <p><strong>Revenue Streams:</strong></p>
+                <div class="revenue-stream">
+                    <strong>Interest Income:</strong> 8-15% APR on loans (primary revenue)
+                </div>
+                <div class="revenue-stream">
+                    <strong>Origination Fees:</strong> 1-2% per loan processed
+                </div>
+                <div class="revenue-stream">
+                    <strong>Liquidation Fees:</strong> 5-10% on liquidated collateral
+                </div>
+                <div class="revenue-stream">
+                    <strong>Premium Services:</strong> Advanced features for power users
+                </div>
+
+                <p><strong>Unit Economics:</strong></p>
+                <ul>
+                    <li>Average loan size: $50K (65% LTV)</li>
+                    <li>Target margin: 4-8% spread</li>
+                    <li>Customer lifetime value: $2,500+</li>
+                </ul>
+
+                <p><strong>Pricing Strategy:</strong> Competitive rates with premium service tiers</p>
+            </div>
+
+            <!-- URG Token - How It Works -->
+            <div class="slide highlight">
+                <h2>
+                    <span class="slide-icon">🪙</span>
+                    URG Token: Simple as 1-2-3
+                </h2>
+                <div class="token-step">
+                    <span class="step-number">1</span>
+                    <h4>Stake URG Tokens</h4>
+                    <p>Lock tokens in our staking contract</p>
+                </div>
+                <div class="step-arrow">↓</div>
+                <div class="token-step">
+                    <span class="step-number">2</span>
+                    <h4>Get Instant Benefits</h4>
+                    <p>Automatic discounts + liquidation protection</p>
+                </div>
+                <div class="step-arrow">↓</div>
+                <div class="token-step">
+                    <span class="step-number">3</span>
+                    <h4>Save Money</h4>
+                    <p>Lower rates + peace of mind</p>
+                </div>
+            </div>
+
+            <!-- Real Example -->
+            <div class="slide">
+                <h2>
+                    <span class="slide-icon">💵</span>
+                    Real Savings Example
+                </h2>
+                <div class="comparison-box without">
+                    <h4>Without URG</h4>
+                    <ul>
+                        <li>$10,000 collateral → $6,500 loan (65% LTV)</li>
+                        <li>8% APR interest rate</li>
+                        <li>Instant liquidation risk</li>
+                        <li><strong>Cost: $520/year</strong></li>
+                    </ul>
+                </div>
+                <div class="comparison-box with">
+                    <h4>With URG (Platinum Tier)</h4>
+                    <ul>
+                        <li>$10,000 collateral → $7,500 loan (75% LTV)</li>
+                        <li>6% APR interest rate</li>
+                        <li>2-hour liquidation buffer</li>
+                        <li><strong>Cost: $450/year</strong></li>
+                    </ul>
+                </div>
+                <div class="savings-highlight">
+                    Save $70/year + Borrow $1,000 More
+                </div>
+            </div>
+
+            <!-- Token Distribution -->
+            <div class="slide">
+                <h2>
+                    <span class="slide-icon">📊</span>
+                    Token Distribution
+                </h2>
+                <div class="metric">
+                    <span class="metric-value">100,000,000</span>
+                    <span class="metric-label">Total URG Supply (Fixed)</span>
+                </div>
+                <div class="distribution-bar">
+                    <div class="distribution-segment" style="width: 60%; background: linear-gradient(90deg, #8762FD, #a98dff);">60%</div>
+                    <div class="distribution-segment" style="width: 15%; background: #51cf66;">15%</div>
+                    <div class="distribution-segment" style="width: 15%; background: #fcc419;">15%</div>
+                    <div class="distribution-segment" style="width: 10%; background: #ff6b6b;">10%</div>
+                </div>
+                <div class="distribution-legend">
+                    <div class="legend-item">
+                        <span class="legend-dot" style="background: linear-gradient(90deg, #8762FD, #a98dff);"></span>
+                        <span>Community Rewards (60%)</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-dot" style="background: #51cf66;"></span>
+                        <span>Team - 2yr vest (15%)</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-dot" style="background: #fcc419;"></span>
+                        <span>Treasury (15%)</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-dot" style="background: #ff6b6b;"></span>
+                        <span>Liquidity - locked (10%)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Market Opportunity -->
+            <div class="slide">
+                <h2>
+                    <span class="slide-icon">🎯</span>
+                    Market Opportunity
+                </h2>
+                <div class="market-stat">
+                    <span class="market-stat-icon">💰</span>
+                    <div class="market-stat-text">
+                        <div class="market-stat-value">$50B+</div>
+                        <div>Total Value Locked in Crypto Lending</div>
+                    </div>
+                </div>
+                <div class="market-stat">
+                    <span class="market-stat-icon">📈</span>
+                    <div class="market-stat-text">
+                        <div class="market-stat-value">15%</div>
+                        <div>Annual Market Growth</div>
+                    </div>
+                </div>
+                <div class="market-stat">
+                    <span class="market-stat-icon">👥</span>
+                    <div class="market-stat-text">
+                        <div class="market-stat-value">50M+</div>
+                        <div>Crypto Holders Worldwide</div>
+                    </div>
+                </div>
+                <p style="margin-top: 15px;"><strong>The Gap:</strong> Zero platforms offer real utility tokens</p>
+                <div class="gap-list">
+                    <span class="gap-item">Nexo/Celsius: No real utility</span>
+                    <span class="gap-item">Aave/Compound: Governance only</span>
+                </div>
+            </div>
+
+            <!-- First Mover Advantage -->
+            <div class="slide highlight">
+                <h2>
+                    <span class="slide-icon">🏆</span>
+                    We're First With Real Utility
+                </h2>
+                <p><strong>URG delivers what no other token offers:</strong></p>
+                <div class="first-mover">
+                    <div class="first-mover-item">
+                        <span class="check-yes">✓</span>
+                        <span>Liquidation Protection</span>
+                    </div>
+                    <div class="first-mover-item">
+                        <span class="check-yes">✓</span>
+                        <span>Rate Discounts via Staking</span>
+                    </div>
+                    <div class="first-mover-item">
+                        <span class="check-yes">✓</span>
+                        <span>Cashback Rewards</span>
+                    </div>
+                    <div class="first-mover-item">
+                        <span class="check-yes">✓</span>
+                        <span>Compliant Utility Token</span>
+                    </div>
+                </div>
+                <p style="margin-top: 20px; text-align: center; font-size: 1.1rem;"><strong>Best utility features, fully compliant, user-first design</strong></p>
+            </div>
+
+            <!-- URG Comparison Table -->
+            <div class="slide full-width">
+                <h2>
+                    <span class="slide-icon">⚖️</span>
+                    How URG Compares
+                </h2>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>URG</th>
+                            <th>Nexo</th>
+                            <th>Aave</th>
+                            <th>Compound</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Liquidation Protection</strong></td>
+                            <td><span class="check-yes">✓ 2 hours</span></td>
+                            <td><span class="check-no">✗ Instant</span></td>
+                            <td><span class="check-no">✗ Instant</span></td>
+                            <td><span class="check-no">✗ Instant</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Rate Discounts</strong></td>
+                            <td><span class="check-yes">✓ Up to 25%</span></td>
+                            <td><span class="check-partial">⚠ Dividends</span></td>
+                            <td><span class="check-no">✗ None</span></td>
+                            <td><span class="check-no">✗ None</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cashback</strong></td>
+                            <td><span class="check-yes">✓ 20%</span></td>
+                            <td><span class="check-no">✗ No</span></td>
+                            <td><span class="check-no">✗ No</span></td>
+                            <td><span class="check-no">✗ No</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Higher LTV</strong></td>
+                            <td><span class="check-yes">✓ 75%</span></td>
+                            <td><span class="check-partial">⚠ 70%</span></td>
+                            <td><span class="check-partial">⚠ 70%</span></td>
+                            <td><span class="check-partial">⚠ 75%</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fiat Loans</strong></td>
+                            <td><span class="check-yes">✓ Yes</span></td>
+                            <td><span class="check-yes">✓ Yes</span></td>
+                            <td><span class="check-no">✗ Crypto only</span></td>
+                            <td><span class="check-no">✗ Crypto only</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Gas Fees</strong></td>
+                            <td><span class="check-yes">✓ Free</span></td>
+                            <td><span class="check-partial">⚠ User pays</span></td>
+                            <td><span class="check-no">✗ $50-200</span></td>
+                            <td><span class="check-no">✗ $50-200</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Regulatory Status</strong></td>
+                            <td><span class="check-yes">✓ Compliant</span></td>
+                            <td><span class="check-partial">⚠ Issues</span></td>
+                            <td><span class="check-partial">⚠ Gray area</span></td>
+                            <td><span class="check-partial">⚠ Gray area</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Token Roadmap -->
+            <div class="slide">
+                <h2>
+                    <span class="slide-icon">🗓️</span>
+                    12-Month Token Roadmap
+                </h2>
+                <div class="roadmap-grid">
+                    <div class="roadmap-quarter">
+                        <h4>Q2 2025: Launch</h4>
+                        <ul>
+                            <li>Token Generation Event</li>
+                            <li>Platform public launch</li>
+                            <li>First 1,000 users</li>
+                        </ul>
+                    </div>
+                    <div class="roadmap-quarter">
+                        <h4>Q3 2025: Growth</h4>
+                        <ul>
+                            <li>CEX listings (Gate.io, KuCoin)</li>
+                            <li>$10M+ TVL target</li>
+                            <li>Mobile app launch</li>
+                        </ul>
+                    </div>
+                    <div class="roadmap-quarter">
+                        <h4>Q4 2025: Scale</h4>
+                        <ul>
+                            <li>Multi-chain expansion</li>
+                            <li>$50M+ TVL target</li>
+                            <li>Tier-1 CEX listings</li>
+                        </ul>
+                    </div>
+                    <div class="roadmap-quarter">
+                        <h4>2026: Dominance</h4>
+                        <ul>
+                            <li>DAO transition</li>
+                            <li>NFT collateral support</li>
+                            <li>$200M+ TVL target</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team -->
+            <div class="slide">
+                <h2>
+                    <span class="slide-icon">👥</span>
+                    Team
+                </h2>
+                <div class="team-member">
+                    <strong>Founders & Management</strong>
+                    <p>Experienced fintech and blockchain professionals with proven track records in regulated financial services and smart contract development.</p>
+                </div>
+                
+                <div class="team-member">
+                    <strong>Technical Leadership</strong>
+                    <p>Full-stack blockchain developers with expertise in Solidity, DeFi protocols, and enterprise security frameworks.</p>
+                </div>
+                
+                <div class="team-member">
+                    <strong>Advisory Board</strong>
+                    <p>Former executives from traditional banking, crypto exchanges, and regulatory experts in UAE/Brazil jurisdictions.</p>
+                </div>
+
+                <p><strong>Key Hires Planned:</strong> Head of Compliance, Senior Smart Contract Developer, Business Development Lead</p>
+            </div>
+
+            <!-- Financials -->
+            <div class="slide highlight">
+                <h2>
+                    <span class="slide-icon">📈</span>
+                    Financials
+                </h2>
+                <p><strong>MVP Projections (90 days):</strong></p>
+                <div class="metric">
+                    <span class="metric-value">100</span>
+                    <span class="metric-label">Active Users</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">$1M+</span>
+                    <span class="metric-label">Total Value Locked</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">$50K+</span>
+                    <span class="metric-label">Revenue Generated</span>
+                </div>
+
+                <p><strong>12-Month Targets:</strong></p>
+                <ul>
+                    <li>2,500 active borrowers</li>
+                    <li>$25M TVL</li>
+                    <li>$200K monthly revenue</li>
+                    <li>Break-even by month 8-10</li>
+                </ul>
+
+                <p><strong>Use of Funds:</strong></p>
+                <div class="funding-bar">
+                    <div class="funding-fill" style="width: 39%"></div>
+                </div>
+                <p style="font-size: 0.9em;">39% Development • 34% Production/Audit • 27% Business Setup</p>
+            </div>
+        </div>
+
+        <div class="cta">
+            <h2>Ready to Unlock Crypto Liquidity?</h2>
+            <p>Join us in building the future of trustless, compliant crypto lending. Seeking pre-seed funding for MVP development and Dubai business setup.</p>
+            <p><strong>Target ROI:</strong> 10x+ returns within 24 months</p>
+            <a href="#contact" class="cta-button">Let's Talk Investment</a>
+        </div>
+    </div>
+
+    <script>
+        // Add subtle animations on scroll
+        const slides = document.querySelectorAll('.slide');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        slides.forEach(slide => {
+            slide.style.opacity = '0';
+            slide.style.transform = 'translateY(20px)';
+            slide.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(slide);
+        });
+
+        // Add click tracking for metrics
+        document.querySelectorAll('.metric, .slide').forEach(element => {
+            element.addEventListener('click', function() {
+                this.style.transform = 'scale(1.02)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 200);
+            });
+        });
+    </script>
+</body>
+</html>
